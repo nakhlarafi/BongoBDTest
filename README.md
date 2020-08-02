@@ -111,4 +111,32 @@ public class Tester{
 ```
 
 <h1>Problem 3</h1>
+I will use MVVM model for making this video player app.
+
+* Model Class
+There will be a model class which will have get and set methods for each video files. Usally here the locations and the image thumbnails.
+
+* Repository Class
+The gathered file path will be sent to the model class.
+
+* Adapter Class
+It will have an adapter class for shwoing the video files stored on the entire mobile storage gathered using Repository and Model classes.
+
+* Viewmodel Class
+For adding new values.
+
+* Pseudocode for the Play/Pause/Rewind/Forward functionalities
+```
+public void PlayButton(View view){
+
+        if(videoView.isPlaying())
+        {
+            videoView.pause();
+        }
+        else{
+            videoView.start();
+        }
+
+    }
+```
 
