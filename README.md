@@ -69,3 +69,43 @@ public class Tester{
   }
 }
 ```
+<h1>Problem 2b</h1>
+I have used the Facotory Design Pattern. I have created object without exposing the creation logic and refered to newly created object using a common interface.
+
+* Creating the factory class
+```scss
+public class VehicleFactory {
+ 
+   //use getVehicle method to get object of type vehicle 
+   public Vehicle getVehicle(String vehiType, int numOfWheels, int numOfPassenger, boolean hasGas){
+      if(vehiType == null){
+         return null;
+      }  
+      if(vehiType.equalsIgnoreCase("Car")){
+         return new Car(numOfWheels, numOfPassenger, hasGas);
+         
+      } else if(vehiType.equalsIgnoreCase("Plane")){
+         return new Plane(numOfWheels, numOfPassenger, hasGas);
+         
+      }
+      
+      return null;
+   }
+}
+```
+* Running the factory
+
+```scss
+public class Tester{
+  public static void main(String []args){
+    VehicleFactory vFactory = new VehicleFactory();
+
+    Vehicle v1 = vFactory.getVehicle("Car",4,4,false);
+    System.out.println(v1.has_gas());
+    
+    Vehicle v2 = vFactory.getVehicle("Plane",10,4,true);
+    System.out.println(v2.set_num_of_wheels());
+    
+  }
+}
+```
