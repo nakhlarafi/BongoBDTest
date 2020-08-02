@@ -142,3 +142,36 @@ public void PlayButton(View view){
     }
 
 ```
+<h2>Forward</h2>
+
+```scss
+public void ForwardButton(View view){
+
+        if (videoView != null) {
+            int currentPosition = videoView.getCurrentPosition();
+            if (currentPosition + seekForwardTime <= videoView.getDuration()) {
+                videoView.seekTo(currentPosition + seekForwardTime);
+            } else {
+                videoView.seekTo(videoView.getDuration());
+            }
+        }
+    }
+
+```
+
+<h2>Rewind</h2>
+
+```scss
+public void RewindButton(View view){
+       
+        if (videoView != null) {
+            int currentPosition = videoView.getCurrentPosition();
+            if (currentPosition - seekBackwardTime >= 0) {
+                videoView.seekTo(currentPosition - seekBackwardTime);
+            } else {
+                videoView.seekTo(0);
+            }
+        }
+    }
+```
+
