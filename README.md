@@ -111,19 +111,16 @@ public class Tester{
 ```
 
 <h1>Problem 3</h1>
-I will use MVVM model for making this video player app.
+I will use MVP model for making this video player app.
 
 * Model Class : 
-There will be a model class which will have get and set methods for each video files. Usally here the locations and the image thumbnails.
+There will be a model class which will have get and set methods for each video files. Usally here the mp4 file locations and the image thumbnails.
 
-* Repository Class : 
-The gathered file path will be sent to the model class.
+* Presenter Class : 
+Retrieves data from Model and shows it in the View. It also processes user action forwarded to it by the View.
 
-* Adapter Class : 
-It will have an adapter class for shwoing the video files stored on the entire mobile storage gathered using Repository and Model classes.
-
-* Viewmodel Class : 
-For adding new values.
+* View Class : 
+Shows all the videos on the local storage in a recycler view. Routes user actions to the Presenter.
 
 <h1>Pseudocode for the Play/Pause/Rewind/Forward functionalities</h1> 
 <h2>Play or Pause</h2>
