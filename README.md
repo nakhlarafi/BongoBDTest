@@ -127,6 +127,7 @@ For adding new values.
 
 * Pseudocode for the Play/Pause/Rewind/Forward functionalities
 <h2>Play or Pause</h2>
+
 ```scss
 public void PlayButton(View view){
 
