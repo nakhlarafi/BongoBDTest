@@ -126,7 +126,8 @@ It will have an adapter class for shwoing the video files stored on the entire m
 For adding new values.
 
 * Pseudocode for the Play/Pause/Rewind/Forward functionalities
-```
+<h2>Play or Pause</h2>
+```scss
 public void PlayButton(View view){
 
         if(videoView.isPlaying())
@@ -138,5 +139,5 @@ public void PlayButton(View view){
         }
 
     }
-```
 
+```
