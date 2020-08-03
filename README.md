@@ -112,18 +112,18 @@ public class Tester{
 
 <h1>Problem 3</h1>
 I have used Facade design pattern for making this video player app methods.
-There is an interface method named `Functionalities`. `PlayPause`, `Forward`. `Rewind` classes implements the `action(String s, VideoView videoView)` method from it. The logics are written in the action method from differenct classes. Then there is a method named `ShapeMaker` which is the Facade class. This pattern hides the complexities of the system.
+There is an interface method named `Functionalities`. `PlayPause`, `Forward`. `Rewind` classes implements the `action()` method from it. The logics are written in the action method from differenct classes. Then there is a method named `ShapeMaker` which is the Facade class. This pattern hides the complexities of the system.
 
 <h1>Pseudocode for the Play/Pause/Rewind/Forward functionalities</h1> 
 <h2>Play or Pause</h2>
 
-* **Interface Class
+**Interface Class
 ```scss
 public interface Functionalities {
     void actions(String s, VideoView videoView);
 }
 ```
-* **Concrete classes and logics
+**Concrete classes and logics
 ```scss
 public class PlayPause implements Functionalities{
 
@@ -184,7 +184,7 @@ public class Forward implements Functionalities {
     }
 }
 ```
-* **Facade Class
+**Facade Class
 
 ```scss
 public class ShapeMaker {
