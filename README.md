@@ -111,23 +111,27 @@ public class Tester{
 ```
 
 <h1>Problem 3</h1>
-I will use MVP model for making this video player app.
-
-* Model Class : 
-There will be a model class which will have get and set methods for each video files. Usally here the mp4 file locations and the image thumbnails.
-
-* Presenter Class : 
-Retrieves data from Model and shows it in the View. It also processes user action forwarded to it by the View.
-
-* View Class : 
-Shows all the videos on the local storage in a recycler view. Routes user actions to the Presenter.
+I have used Facade design pattern for making this video player app methods.
+There is an interface method named `Functionalities`. `PlayPause`, `Forward`. `Rewind` classes implements the `action(String s, VideoView videoView)` method from it. The logics are written in the action method from differenct classes. Then there is a method named `ShapeMaker` which is the Facade class. This pattern hides the complexities of the system.
 
 <h1>Pseudocode for the Play/Pause/Rewind/Forward functionalities</h1> 
 <h2>Play or Pause</h2>
 
+** Interface Class
 ```scss
-public void PlayButton(View view){
+public interface Functionalities {
+    void actions(String s, VideoView videoView);
+}
+```
+** Concrete classes
+```scss
+public class PlayPause implements Functionalities{
 
+    private int seekForwardTime = 3 * 1000; // default 5 second
+    private int seekBackwardTime = 3 * 1000; // default 5 second
+
+    @Override
+    public void actions(String s, VideoView videoView) {
         if(videoView.isPlaying())
         {
             videoView.pause();
@@ -135,14 +139,38 @@ public void PlayButton(View view){
         else{
             videoView.start();
         }
+    }
+}
+```
+```scss
+public class Rewind implements Functionalities {
+
+    private int seekForwardTime = 3 * 1000; // default 5 second
+    private int seekBackwardTime = 3 * 1000; // default 5 second
+
+    @Override
+    public void actions(String s, VideoView videoView) {
+
+        if (videoView != null) {
+            int currentPosition = videoView.getCurrentPosition();
+            if (currentPosition - seekBackwardTime >= 0) {
+                videoView.seekTo(currentPosition - seekBackwardTime);
+            } else {
+                videoView.seekTo(0);
+            }
+        }
 
     }
-
+}
 ```
-<h2>Forward</h2>
-
 ```scss
-public void ForwardButton(View view){
+public class Forward implements Functionalities {
+
+    private int seekForwardTime = 3 * 1000; // default 5 second
+    private int seekBackwardTime = 3 * 1000; // default 5 second
+
+    @Override
+    public void actions(String s, VideoView videoView) {
 
         if (videoView != null) {
             int currentPosition = videoView.getCurrentPosition();
@@ -152,23 +180,34 @@ public void ForwardButton(View view){
                 videoView.seekTo(videoView.getDuration());
             }
         }
+
     }
-
+}
 ```
-
-<h2>Rewind</h2>
+** Facade Class
 
 ```scss
-public void RewindButton(View view){
-       
-        if (videoView != null) {
-            int currentPosition = videoView.getCurrentPosition();
-            if (currentPosition - seekBackwardTime >= 0) {
-                videoView.seekTo(currentPosition - seekBackwardTime);
-            } else {
-                videoView.seekTo(0);
-            }
-        }
+public class ShapeMaker {
+    private Functionalities playPause;
+    private Functionalities forward;
+    private Functionalities rewind;
+
+    public ShapeMaker() {
+        playPause = new PlayPause();
+        forward = new Forward();
+        rewind = new Rewind();
     }
+
+    public void setplayPause(String s, VideoView videoView){
+        playPause.actions(s, videoView);
+    }
+    public void setRewind(String s, VideoView videoView){
+        rewind.actions(s, videoView);
+    }
+    public void setForward(String s, VideoView videoView){
+        forward.actions(s, videoView);
+    }
+}
 ```
+I have also added seekbar functionalities. I have completed the app and its in the VideoPlayer folder. The app basically collects all the mp4 files and then sends it to another activity when it is clicked and plays it.
 
