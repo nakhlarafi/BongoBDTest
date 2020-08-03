@@ -117,13 +117,13 @@ There is an interface method named `Functionalities`. `PlayPause`, `Forward`. `R
 <h1>Pseudocode for the Play/Pause/Rewind/Forward functionalities</h1> 
 <h2>Play or Pause</h2>
 
-** Interface Class
+* **Interface Class
 ```scss
 public interface Functionalities {
     void actions(String s, VideoView videoView);
 }
 ```
-** Concrete classes and logics
+* **Concrete classes and logics
 ```scss
 public class PlayPause implements Functionalities{
 
@@ -184,7 +184,7 @@ public class Forward implements Functionalities {
     }
 }
 ```
-** Facade Class
+* **Facade Class
 
 ```scss
 public class ShapeMaker {
