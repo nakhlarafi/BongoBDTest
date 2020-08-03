@@ -21,6 +21,8 @@ public class CustomPlayer extends AppCompatActivity {
     private int seekForwardTime = 3 * 1000; // default 5 second
     private int seekBackwardTime = 3 * 1000; // default 5 second
 
+    ShapeMaker shapeMaker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +76,9 @@ public class CustomPlayer extends AppCompatActivity {
             }
         });
 
+        shapeMaker = new ShapeMaker();
+
+
         PlayButton(null);
 
     }
@@ -99,13 +104,15 @@ public class CustomPlayer extends AppCompatActivity {
      */
     public void PlayButton(View view){
 
-        if(videoView.isPlaying())
+        /*if(videoView.isPlaying())
         {
             videoView.pause();
         }
         else{
             videoView.start();
-        }
+        }*/
+
+        shapeMaker.setplayPause(MEDIA_PATH, videoView);
 
     }
 
@@ -122,14 +129,16 @@ public class CustomPlayer extends AppCompatActivity {
 //        videoView.stopPlayback();
 //        videoView.setVideoPath(MEDIA_PATH);
 //        videoView.start();
-        if (videoView != null) {
+        /*if (videoView != null) {
             int currentPosition = videoView.getCurrentPosition();
             if (currentPosition + seekForwardTime <= videoView.getDuration()) {
                 videoView.seekTo(currentPosition + seekForwardTime);
             } else {
                 videoView.seekTo(videoView.getDuration());
             }
-        }
+        }*/
+
+        shapeMaker.setForward(MEDIA_PATH, videoView);
     }
 
     /**
@@ -139,14 +148,15 @@ public class CustomPlayer extends AppCompatActivity {
     public void RewindButton(View view){
         //videoView.stopPlayback();
         //videoView.setVideoPath(MEDIA_PATH);
-        if (videoView != null) {
+        /*if (videoView != null) {
             int currentPosition = videoView.getCurrentPosition();
             if (currentPosition - seekBackwardTime >= 0) {
                 videoView.seekTo(currentPosition - seekBackwardTime);
             } else {
                 videoView.seekTo(0);
             }
-        }
+        }*/
+        shapeMaker.setRewind(MEDIA_PATH, videoView);
     }
 
 }
