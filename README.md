@@ -123,7 +123,7 @@ public interface Functionalities {
     void actions(String s, VideoView videoView);
 }
 ```
-** Concrete classes
+** Concrete classes and logics
 ```scss
 public class PlayPause implements Functionalities{
 
